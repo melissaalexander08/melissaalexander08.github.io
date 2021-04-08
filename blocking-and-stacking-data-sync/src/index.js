@@ -5,7 +5,7 @@ miro.onReady(() => {
   miro.initialize({
     extensionPoints: {
       bottomBar: {
-        title: 'widget counter',
+        title: 'Blocking and Stacking Data Sync',
         svgIcon: icon24,
         onClick: () => {
           miro.board.ui.openLeftSidebar('sidebar.html')

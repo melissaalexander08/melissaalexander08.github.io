@@ -14,7 +14,7 @@ it will help you.
 
 Configure the application as follows:
 
-- enter uri for the `widget-counter` resource in `Web-plugin` section, e.g. if you use GitHub Pages uri will be as
+- enter url for the `widget-counter` resource in `Web-plugin` section, e.g. if you use GitHub Pages url will be as
   follow: `https://<nickname>.github.io/app-examples/widget-counter/`;
 - choose `boards:read` scope.
 
