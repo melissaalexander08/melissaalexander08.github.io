@@ -52,10 +52,12 @@ function countBy(list, keyGetter) {
     const key = keyGetter(item)
     const key1 = key.replaceAll("<p>", "")
     const key2 = key1.split("</p>")
-    const key3 = key2[0]
-    const count = map.get(key)
+    const key3 = key2.splice(key2.length - 1)
+    const departmentName = key3.splice(key3.length -1).join(" ")
+    const departmentSF = key3[key3.length - 1]
+    const count = map.get(departmentName)
   //  map.set(key, !count ? 1 : count + 1)
-    map.set(key3, !count ? 1 : count + 1)
+    map.set(departmentName, !count ? 1 : count + 1)
   })
   return new Map([...map.entries()].sort((a, b) => b[1] - a[1]))
 }
