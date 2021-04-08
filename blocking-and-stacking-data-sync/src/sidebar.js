@@ -49,7 +49,7 @@ function calcByType(widgets) {
 function countBy(list, keyGetter) {
   const map = new Map()
   list.forEach((item) => {
-    const key = keyGetter(item).replaceAll("<p>", "").split("</p>") // "<p>Yoga A</p><p>1000</p>"
+    const key = keyGetter(item).replaceAll("<p>", "") // "<p>Yoga A</p><p>1000</p>"
     const departmentSF = parseFloat(key.pop().replaceAll(",","")) // "1000" 
     const departmentName = key.splice(key.length - 1,1).join(" ") // "Yoga A"
     const count = map.get(departmentName)
