@@ -43,15 +43,19 @@ function createStatTable(title, emptyText, data) {
 }
 
 function calcByType(widgets) {
-  return countBy(widgets, (a) => a.text)
+  return countBy(widgets, (a) => a.text) // change to .text
 }
 
 function countBy(list, keyGetter) {
   const map = new Map()
   list.forEach((item) => {
     const key = keyGetter(item)
+    const key1 = key.replaceAll("<p>", "")
+    const key2 = key1.split("</p>")
+    const key3 = key2[0]
     const count = map.get(key)
-    map.set(key, !count ? 1 : count + 1)
+  //  map.set(key, !count ? 1 : count + 1)
+    map.set(key3, !count ? 1 : count + 1)
   })
   return new Map([...map.entries()].sort((a, b) => b[1] - a[1]))
 }
