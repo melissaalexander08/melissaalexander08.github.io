@@ -50,8 +50,8 @@ function countBy(list, keyGetter) {
   const map = new Map()
   list.forEach((item) => {
     const key = keyGetter(item).replaceAll("<p>", "").split("</p>") // ["Yoga A", "1000"]
-    const departmentSF = key.pop() // "1000" 
-    const departmentName = key.join(" ") // "Yoga A"
+    const departmentSF = parseFloat(key[key.length - 1]) // "1000" 
+    const departmentName = key.splice(key.length - 1,1).join(" ") // "Yoga A"
     const count = map.get(departmentName)
   //  map.set(key, !count ? 1 : count + 1)
     map.set(departmentName, !count ? 1 : count + 1)
