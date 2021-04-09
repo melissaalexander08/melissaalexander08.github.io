@@ -50,7 +50,7 @@ function countBy(list, keyGetter) {
   const map = new Map()
   list.forEach((item) => {
     if(item.type === "STICKER") {  
-    const key = keyGetter(item).replace('"','').split(" ")
+      const key = keyGetter(item).replace('"','').split(" ")
       const departmentSF = key[key.length - 1] === "" ? parseFloat(key[key.length - 2].replace(",","")) : parseFloat(key[key.length - 1].replace(",",""))
       const departmentName = key[key.length - 1] === "" ? key.slice(0,key.length - 2).join(" ") : key.slice(0,key.length - 1).join(" ")
       const count = map.get(departmentName)
