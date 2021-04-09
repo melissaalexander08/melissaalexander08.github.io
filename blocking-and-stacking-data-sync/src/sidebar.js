@@ -43,13 +43,13 @@ function createStatTable(title, emptyText, data) {
 }
 
 function calcByType(widgets) {
-  return countBy(widgets, (a) => a.type) // type or text
+  return countBy(widgets, (a) => a.plainText) // type or text
 }
 
 function countBy(list, keyGetter) {
   const map = new Map()
   list.forEach((item) => {
-    const key = keyGetter(item).replaceAll("<p>", "").replaceAll('"', '').split("</p>") // ["Yoga A", "1000"]
+    const key = keyGetter(item).split(" ")
     console.log(key)
     const departmentSF = key[key.length - 1] === "" ? parseFloat(key[key.length - 2].replace(",","")) : parseFloat(key[key.length - 1].replace(",",""))
     const departmentName = key[key.length - 1] === "" ? key.slice(0,key.length - 2).join(" ") : key.slice(0,key.length - 1).join(" ")
