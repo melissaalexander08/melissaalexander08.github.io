@@ -49,13 +49,18 @@ function calcByType(widgets) {
 function countBy(list, keyGetter) {
   const map = new Map()
   list.forEach((item) => {
-    const key = keyGetter(item).replaceAll("<p>", "").replaceAll('"', '').split("</p>") // ["Yoga A", "1000"]
-    const departmentSF = key[key.length - 1] === "" ? parseFloat(key[key.length - 2].replace(",","")) : parseFloat(key[key.length - 1].replace(",",""))
-    const departmentName = key[key.length - 1] === "" ? key.slice(0,key.length - 2).join(" ") : key.slice(0,key.length - 1).join(" ")
-    const count = map.get(departmentName)
-  //  map.set(key, !count ? 1 : count + 1)
-    map.set(departmentName, !count ? 1 : count + 1)
+    try {
+      const key = keyGetter(item).replaceAll("<p>", "").replaceAll('"', '').split("</p>") // ["Yoga A", "1000"]
+      const departmentSF = key[key.length - 1] === "" ? parseFloat(key[key.length - 2].replace(",","")) : parseFloat(key[key.length - 1].replace(",",""))
+      const departmentName = key[key.length - 1] === "" ? key.slice(0,key.length - 2).join(" ") : key.slice(0,key.length - 1).join(" ")
+      const count = map.get(departmentName)
+      map.set(departmentName, !count ? 1 : count + 1)
+
+      } catch (error) {
+    console.error("Error caught in loop " + error);
+      }
   })
+  
   return new Map([...map.entries()].sort((a, b) => b[1] - a[1]))
 }
 
