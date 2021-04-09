@@ -55,7 +55,6 @@ function countBy(list, keyGetter) {
       const count = map.get(key)
       map.set(key, !count ? 0 : count + departmentSF)
   })
-  console.log(new Map([...map.entries()].sort((a, b) => b[1] - a[1])))
   return new Map([...map.entries()].sort((a, b) => b[1] - a[1]))
 }
 
