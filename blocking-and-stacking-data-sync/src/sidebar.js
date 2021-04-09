@@ -43,7 +43,7 @@ function createStatTable(title, emptyText, data) {
 }
 
 function calcByType(widgets) {
-  return countBy(widgets, (a) => a.text)
+  return countBy(widgets, (a) => a.type) // type or text
 }
 
 function countBy(list, keyGetter) {
