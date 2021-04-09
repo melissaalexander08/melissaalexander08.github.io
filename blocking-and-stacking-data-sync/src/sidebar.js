@@ -49,13 +49,14 @@ function calcByType(widgets) {
 function countBy(list, keyGetter) {
   const map = new Map()
   list.forEach((item) => {
+    if(!item.type === undefined) {
     if(item.type === "STICKER") {  
       const key = item.plainText.replace('"','').replace("-"," ").replace("  ", " ").split(" ")
       const departmentSF = key[key.length - 1] === "" ? parseFloat(key[key.length - 2].replace(",","")) : parseFloat(key[key.length - 1].replace(",",""))
       const departmentName = key[key.length - 1] === "" ? key.slice(0,key.length - 2).join(" ") : key.slice(0,key.length - 1).join(" ")
       const count = map.get(departmentName)
       map.set(departmentName, !count ? departmentSF : count + departmentSF)
-    }
+    }}
   })
   return new Map([...map.entries()].sort((a, b) => b[1] - a[1]))
 }
