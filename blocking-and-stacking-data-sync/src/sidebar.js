@@ -49,7 +49,7 @@ function calcByType(widgets) {
 function countBy(list, keyGetter) {
   const map = new Map()
   list.forEach((item) => {
-    if(!item.type === undefined) {
+    if (typeof item !== 'undefined') {
     if(item.type === "STICKER") {  
       const key = item.plainText.replace('"','').replace("-"," ").replace("  ", " ").split(" ")
       const departmentSF = key[key.length - 1] === "" ? parseFloat(key[key.length - 2].replace(",","")) : parseFloat(key[key.length - 1].replace(",",""))
